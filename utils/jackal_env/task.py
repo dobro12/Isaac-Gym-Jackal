@@ -474,7 +474,7 @@ def compute_reward_done(goal_dist, pre_goal_dist, costs, goal_threshold, reset_b
     contact = torch.logical_and(progress_buf > 1, costs >= 0.5)
     reward = pre_goal_dist - goal_dist
     reward = torch.where(goal_dist < goal_threshold, torch.ones_like(reward) + reward, reward)
-    reward = reward - contact*0.01
+    reward = reward - contact*0.1
     hazard_step = torch.where(contact, contact + hazard_step_buf, torch.zeros_like(hazard_step_buf))
     reset = torch.where(progress_buf >= max_episode_length, torch.ones_like(reset_buf), hazard_step >= 100)
     return reward, reset, hazard_step
