@@ -1,0 +1,9 @@
+*.png
+*.ipynb
+*.pkl
+*.pt
+__pycache__
+wandb
+model
+results
+.env
